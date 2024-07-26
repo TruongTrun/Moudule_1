@@ -34,7 +34,7 @@
         <h1>Quản Lý Điện Thoại</h1>
         <h2>Thêm Điện Thoại</h2>
         <form id="phoneForm">
-            <label for="id">Mã điện thoại:</label>
+            <label for="id">Mã Máy:</label>
             <input type="text" id="id" required><br><br>
             <label for="name">Tên Máy:</label>
             <input type="text" id="name" required><br><br>
@@ -44,13 +44,12 @@
             <input type="number" id="price" required><br><br>
             <button type="button" onclick="addPhone()">Thêm</button>
         </form>
-        
         <h2>Danh Sách Điện Thoại</h2>
         <button onclick="displayPhones()">Hiển Thị Danh Sách</button>
         <table id="phoneTable">
             <thead>
                 <tr>
-                    <th>Mã điện thoại</th>
+                    <th>Mã Máy</th>
                     <th>Tên Máy</th>
                     <th>Hãng sản xuất</th>
                     <th>Giá</th>
@@ -60,9 +59,7 @@
             </tbody>
         </table>
     </div>
-
     <script>
-        
         class Phone {
             constructor(id, name, manufacturer, price) {
                 this._id = id;
@@ -70,67 +67,48 @@
                 this._manufacturer = manufacturer;
                 this._price = price;
             }
-
-            
             get id() {
                 return this._id;
             }
             set id(value) {
                 this._id = value;
             }
-
             get name() {
                 return this._name;
             }
             set name(value) {
                 this._name = value;
             }
-
             get manufacturer() {
                 return this._manufacturer;
             }
             set manufacturer(value) {
                 this._manufacturer = value;
             }
-
             get price() {
                 return this._price;
             }
             set price(value) {
                 this._price = value;
             }
-
-        
             toString() {
-                return `Mã điện thoại: ${this._id}, Tên: ${this._name}, Hãng sản xuất: ${this._manufacturer}, Giá: ${this._price}`;
+                return `Mã Máy: ${this._id}, Tên Máy: ${this._name}, Hãng sản xuất: ${this._manufacturer}, Giá: ${this._price}`;
             }
         }
-
-       
         let phones = [];
-
-        
         function addPhone() {
             let id = document.getElementById('id').value;
             let name = document.getElementById('name').value;
             let manufacturer = document.getElementById('manufacturer').value;
             let price = parseFloat(document.getElementById('price').value);
-
             let phone = new Phone(id, name, manufacturer, price);
             phones.push(phone);
-
-          
             document.getElementById('phoneForm').reset();
         }
-
-    
         function displayPhones() {
-            
             phones.sort((a, b) => a.price - b.price);
-
             let tableBody = document.getElementById('phoneTable').getElementsByTagName('tbody')[0];
             tableBody.innerHTML = '';
-
             phones.forEach(phone => {
                 let row = tableBody.insertRow();
                 row.insertCell(0).innerText = phone.id;
