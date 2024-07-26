@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tính Toán Mảng Số Nguyên</title>
+</head>
+<body>
+    <h1>Nhập mảng số nguyên</h1>
+    <input type="text" id="arrayInput" placeholder="Nhập các số, cách nhau bởi dấu phẩy">
+    <button onclick="calculate()">Tính toán</button>
+    <p id="result"></p>
+
+    <script>
+        function calculate() {
+          
+            var input = document.getElementById("arrayInput").value;
+        
+            var numbers = input.split(',').map(Number);
+
+            if (numbers.length > 20) {
+                document.getElementById("result").innerHTML = "Mảng không được có nhiều hơn 20 phần tử.";
+                return;
+            }
+
+            var evenSum = 0;
+            var oddSum = 0;
+            var evenNumbers = [];
+            var oddNumbers = [];
+
+          
+            for (var i = 0; i < numbers.length; i++) {
+                if (numbers[i] % 2 === 0) {
+                    evenSum += numbers[i];
+                    evenNumbers.push(numbers[i]);
+                } else {
+                    oddSum += numbers[i];
+                    oddNumbers.push(numbers[i]);
+                }
+            }
+
+    
+            var difference = evenSum - oddSum;
+
+            document.getElementById("result").innerHTML = 
+                "Danh sách các phần tử: " + numbers.join(", ") + "<br>" +
+                "Các số chẵn: " + evenNumbers.join(", ") + "<br>" +
+                "Tổng các số chẵn: " + evenSum + "<br>" +
+                "Các số lẻ: " + oddNumbers.join(", ") + "<br>" +
+                "Tổng các số lẻ: " + oddSum + "<br>" +
+                "Hiệu của Tổng các số chẵn và Tổng các số lẻ: " + difference;
+        }
+    </script>
+</body>
+</html>

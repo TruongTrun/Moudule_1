@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đếm Ký Tự In Hoa</title>
+</head>
+<body>
+    <h1>Đếm Ký Tự In Hoa Trong Chuỗi</h1>
+    <input type="text" id="inputString" placeholder="Nhập chuỗi tại đây">
+    <button onclick="countUpperCase()">Đếm Ký Tự In Hoa</button>
+    <p id="result"></p>
+
+    <script>
+        function countUpperCaseChars(str) {
+           
+            let upperCaseCount = 0;
+
+          
+            for (let i = 0; i < str.length; i++) {
+                
+                if (str[i] >= 'A' && str[i] <= 'Z') {
+                    upperCaseCount++;
+                }
+            }
+
+         
+            if (upperCaseCount > 0) {   
+                return upperCaseCount;
+            } else {
+                return "The Strings is not contain upper char";
+            }
+        }
+
+        function countUpperCase() {
+
+            let inputStr = document.getElementById("inputString").value;
+
+            let result = countUpperCaseChars(inputStr);
+
+
+            document.getElementById("result").innerText = result;
+        }
+    </script>
+</body>
+</html>
